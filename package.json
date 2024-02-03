@@ -1,0 +1,15 @@
+{
+  "name": "rest-rant-24",
+  "version": "1.0.0",
+  "description": "A example of a restaurant app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Daijon Bourne",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2"
+  }
+}
