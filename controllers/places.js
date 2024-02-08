@@ -3,13 +3,14 @@ const router = express.Router();
 const render = require('../render').default;
 const places = require('../models/places');
 
+router.get('/new', (req, res) => {
+    res.render(render('places/new'));
+});
+
 router.get('/', (req, res) => {
     res.send(render('places/Index', { places: places }));
 });
 
-router.get('/new', (req, res) => {
-    res.send(render('places/New'));
-});
 
 router.post('/', (req, res) => {
     const newPlace = { ...req.body };
