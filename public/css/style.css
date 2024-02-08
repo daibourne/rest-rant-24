@@ -10,7 +10,41 @@ img {
     margin: 15px auto;
 }
 
+body {
+    background-color: lightblue;
+    text-align: center;
+}
+
 main {
+    margin-right: 20px;
+    margin-left: 20px;
+    background-color: white;
     max-width: 100%;
     padding: 0 15px;
+}
+
+nav {
+    background-color: cornflowerblue;
+    padding: 10px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+}
+
+nav li {
+    display: inline;
+    margin-right: 25px;
+}
+
+nav a {
+    color: white;
+    font-size: 1.5em;
+    text-decoration: none;
+}
+
+nav a:hover {
+    color: pink;
+    text-decoration: none;
 }
