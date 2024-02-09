@@ -16,6 +16,8 @@ app.get('/', (req, res) => {
 // Load the places controller
 app.use('/places', require('./controllers/places'));
 
+app.use(express.urlencoded({ extended: true }));
+
 // Wildcard/404 route
 app.get('*', (req, res) => {
     console.log('user requested unknown route: ', req.url);
