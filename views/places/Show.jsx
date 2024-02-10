@@ -27,7 +27,7 @@ const Show = ({ place, id }) => {
                 </div>
                 <div className='row align-items-center'>
                     <div className='col'>
-                        <a href='' className='btn btn-warning'>
+                        <a href={`/places/${id}/edit`} className='btn btn-warning'>
                             Edit
                         </a>
                         <form action={`/places/${id}?_method=DELETE`} method='POST'>

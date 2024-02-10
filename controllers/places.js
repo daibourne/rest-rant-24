@@ -14,7 +14,6 @@ router.get('/new', (req, res) => {
 router.get('/:id', (req, res) => {
     const id = Number(req.params.id);
     if (isNaN(id)) {
-        // res.status(400).render('Error 404')
         res.status(400).send(render('Error 404'))
     } else if (!places[id]) {
         res.status(400).send(render('Error 404'))
@@ -48,8 +47,21 @@ router.post('/', (req, res) => {
     res.send('POST /places')
 });
 
+router.get('/:id/edit', (req, res) => {
+    let id = Number(req.params.id)
+    if (isNaN(id)) {
+        res.send(render('error404'))
+    }
+    else if (!places[id]) {
+        res.send(render('error404'))
+    }
+    else {
+        res.send(render('places/edit', { place: places[id] }))
+    }
+});
+
 router.delete('/:id', (req, res) => {
-    let id = Number(req.params.id);
+    const id = Number(req.params.id);
     if (isNaN(id)) {
         res.render('error404')
     }
