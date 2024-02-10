@@ -4,7 +4,7 @@ let places = [
         city: 'Seattle',
         state: 'WA',
         cuisines: 'French, Bakery',
-        pic: '/images/croissant-family-restaurant.png',
+        pic: '/public/images/pexels-mick-victor-792404.jpg',
     },
     {
         name: 'H-Thai-ML',

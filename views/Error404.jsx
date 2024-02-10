@@ -8,7 +8,7 @@ const NotFound = () => {
             <main>
                 <h2>Timmy not found.</h2>
                 <img
-                    src='/images/bread-not-found.jpg'
+                    src='/public/images/404.jpg'
                     alt='Croissant with a Croissant Family, but missing Timmy.'
                 />
             </main>

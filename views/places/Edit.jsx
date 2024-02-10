@@ -27,7 +27,7 @@ const edit_form = (data) => {
                         <label htmlFor='cuisines'>Cuisines</label>
                         <input className='form-control' id='cuisines' name='cuisines' />
                     </div>
-                    <input className='btn btn-primary' type='submit' value='Add Place' />
+                    <input className='btn btn-primary' type='submit' value='Submit' />
                 </form>
             </main>
         </Default>

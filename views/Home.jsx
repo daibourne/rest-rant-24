@@ -8,7 +8,7 @@ const Home = () => {
                 <h1>HOME</h1>
                 <div>
                     <img
-                        src='/images/croissant-family-restaurant.png'
+                        src='/public/images/pexels-mick-victor-792404.jpg'
                         alt='Croissant with a Croissant Family'
                     />
                 </div>
