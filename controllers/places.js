@@ -4,7 +4,11 @@ const render = require('../render');
 const places = require('../models/places');
 
 router.get('/', (req, res) => {
-    res.send(render('places/Index', {places: places}));
+    res.send(render('places/Index', { places: places }));
+});
+
+router.get('/new', (req, res) => {
+    res.send(render('places/new'));
 });
 
 router.get('/:id', (req, res) => {
@@ -15,12 +19,8 @@ router.get('/:id', (req, res) => {
     } else if (!places[id]) {
         res.status(400).send(render('Error 404'))
     } else {
-        res.send(render('places/Show', {place: places[id], }));
+        res.send(render('places/Show', { place: places[id], id:id }));
     }
-});
-
-router.get('/new', (req, res) => {
-    res.render(render('places/new'));
 });
 
 router.get('/', (req, res) => {

@@ -30,7 +30,7 @@ const Show = ({ place, id }) => {
                         <a href='' className='btn btn-warning'>
                             Edit
                         </a>
-                        <form action='?_method=DELETE method='POST>
+                        <form action={`/places/${id}?_method=DELETE`} method='POST'>
                             <button type='submit' className='btn btn-danger'>
                                 Delete
                             </button>

@@ -13,7 +13,7 @@ const new_form = () => {
                     </div>
                     <div className='form-group'>
                         <label htmlFor='pic'>Place Picture</label>
-                        <input className='form-control' type='url' id='pic' name='pic' required />
+                        <input className='form-control' type='url' id='pic' name='pic' />
                     </div>
                     <div className='form-group'>
                         <label htmlFor='city'>City</label>
@@ -25,7 +25,7 @@ const new_form = () => {
                     </div>
                     <div className='form-group'>
                         <label htmlFor='cuisines'>Cuisines</label>
-                        <input className='form-control' id='cuisines' name='cuisines' required />
+                        <input className='form-control' id='cuisines' name='cuisines' />
                     </div>
                     <input className='btn btn-primary' type='submit' value='Add Place' />
                 </form>
