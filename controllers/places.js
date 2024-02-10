@@ -15,7 +15,7 @@ router.get('/:id', (req, res) => {
     } else if (!places[id]) {
         res.status(400).send(render('Error 404'))
     } else {
-        res.send(render('places/Show', {place: places[id] }));
+        res.send(render('places/Show', {place: places[id], }));
     }
 });
 
@@ -46,6 +46,20 @@ router.post('/', (req, res) => {
 router.post('/', (req, res) => {
     console.log(req.body)
     res.send('POST /places')
+});
+
+router.delete('/:id', (req, res) => {
+    let id = Number(req.params.id);
+    if (isNaN(id)) {
+        res.render('error404')
+    }
+    else if (!places[id]) {
+        res.render('error404')
+    }
+    else {
+        places.splice(id, 1)
+        res.redirect('/places')
+    }
 });
 
 module.exports = router;
