@@ -4,11 +4,22 @@ const render = require('../render');
 const places = require('../models/places');
 
 router.get('/', (req, res) => {
-    res.send(render('places/Index', { places: places }));
+    // res.send(render('places/Index', { places: places }));
+    Place.find().then((places) => {
+        res.send(render('Index', { places: places }));
+    });
 });
 
 router.get('/new', (req, res) => {
     res.send(render('places/new'));
+});
+
+router.get('/:id', (req, res) => {
+    places.findById(req.params.id).then((place) => {
+        res.send(render('Show',{ place: place }));
+    }).catch((err) => {
+        res.send(render('error404'));
+    });
 });
 
 router.get('/:id', (req, res) => {
@@ -38,7 +49,8 @@ router.post('/', (req, res) => {
     if (!newPlace.state) {
         newPlace.state = 'USA';
     }
-    places.push(newPlace);
+    db.place.create(req.body)
+    // places.push(newPlace);
     res.redirect('/places');
 });
 
