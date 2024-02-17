@@ -1,7 +1,7 @@
 const React = require('react');
 const Default = require('../layouts/Default');
 
-const Show = ({ place, id }) => {
+const Show = ({ place }) => {
     const cuisinesBadges = place.cuisines.split(',').map((cuisine) => {
         return (
             <span key={cuisine} className='badge rounded-pill text-bg0info me-2'>
@@ -25,19 +25,19 @@ const Show = ({ place, id }) => {
                     <p>{cuisinesBadges}</p>
                     </div>
                 </div>
-                <h3>Located in {data.place.city}, {data.place.state}</h3>
+                <h3>Located in {place.city}, {place.state}</h3>
                 <h3>
-                    {data.place.showEstablished()}
+                    {place.showEstablished()}
                 </h3>
                 <h4>
-                    Serving {data.place.cuisines}
+                    Serving {place.cuisines}
                 </h4>
                 <div className='row align-items-center'>
                     <div className='col'>
-                        <a href={`/places/${id}/edit`} className='btn btn-warning'>
+                        <a href={`/places/${place.id}/edit`} className='btn btn-warning'>
                             Edit
                         </a>
-                        <form action={`/places/${id}?_method=DELETE`} method='POST'>
+                        <form action={`/places/${place.id}?_method=DELETE`} method='POST'>
                             <button type='submit' className='btn btn-danger'>
                                 Delete
                             </button>

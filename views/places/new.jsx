@@ -15,10 +15,6 @@ const new_form = () => {
                         <label htmlFor='pic'>Place Picture</label>
                         <input className='form-control' type='url' id='pic' name='pic' />
                     </div>
-                    <div>
-                        <label for='founded'>Founded Year</label>
-                        <input className='form=control' id='founded' name='founded' />
-                    </div>
                     <div className='form-group'>
                         <label htmlFor='city'>City</label>
                         <input className='form-control' id='city' name='city' />
@@ -32,7 +28,7 @@ const new_form = () => {
                         <input className='form-control' id='cuisines' name='cuisines' />
                     </div>
                     <div className='form-group col-sm-4'>
-                        <label htmlFor='founded'>FOunded Year</label>
+                        <label htmlFor='founded'>Founded Year</label>
                         <input
                         type='number'
                         className='form-control'

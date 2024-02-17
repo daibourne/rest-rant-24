@@ -1,15 +1,15 @@
 const React = require('react');
 const Default = require('../layouts/Default.jsx');
 
-const edit_form = (data) => {
+const edit_form = ({ place }) => {
     return (
         <Default>
             <main>
                 <h1>Add a New Place</h1>
-                <form method='POST' action={`/places/${data.place.id}?_method=PUT`}>
+                <form method='POST' action={`/places/${place.id}?_method=PUT`} >
                     <div className='form-group'>
                         <label htmlFor='name'>Place Name</label>
-                        <input className='form-control' id='name' name='name' value={data.place.name} required />
+                        <input className='form-control' id='name' name='name' value={place.name} required />
                     </div>
                     <div className='form-group'>
                         <label htmlFor='pic'>Place Picture</label>

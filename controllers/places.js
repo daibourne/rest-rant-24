@@ -7,11 +7,11 @@ const db = require('../models');
 router.get('/', (req, res) => {
     db.Place.find()
     .then((places) => {
-        res.render('places/index', { places })
+        res.send(render('places/index', { places }))
     })
     .catch(err => {
         console.log(err)
-        res.render('error404')
+        res.send(render('error404'))
     })
 });
 //     // res.send(render('places/Index', { places: places }));
@@ -24,23 +24,14 @@ router.get('/new', (req, res) => {
     res.send(render('places/new'));
 });
 
-router.get('/:id', (req, res))
-
-//     places.findById(req.params.id).then((place) => {
-//         res.send(render('Show',{ place: place }));
-//     }).catch((err) => {
-//         res.send(render('error404'));
-//     });
-// });
-
 router.get('/:id', (req, res) => {
     db.Place.findById(req.params.id)
     .then(place => {
-        res.render('places/show', { place })
+        res.send(render('places/show', { place }))
     })
     .catch(err => {
         console.log('err', err)
-        res.render('error404')
+        res.send(render('error404'))
     })
 });
 
@@ -66,7 +57,7 @@ router.post('/', (req, res) => {
     })
     .catch(err => {
         console.log('err', err)
-        res.render('error404')
+        res.send(render('error404'))
     })
 });
 
@@ -86,29 +77,26 @@ router.post('/', (req, res) => {
 
 
 router.get('/:id/edit', (req, res) => {
-    let id = Number(req.params.id)
-    if (isNaN(id)) {
-        res.send(render('error404'))
-    }
-    else if (!places[id]) {
-        res.send(render('error404'))
-    }
-    else {
-        res.send(render('places/edit', { place: places[id] }))
-    }
+    db.Place.findById(req.params.id)
+        .then((place) => {
+            res.send(render('places/Edit', { place }));
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(404).send(render('Error404'));
+        });
 });
 
 router.put('/:id', (req, res) => {
-    const id = NUmber(req.params.id)
-    if (isNaN(id)) {
-        res.render('error404')
-    }
-    else if (!places[id]) {
-        res.render('error404')
-    }
-    else {
-        res.redirect(`/places/${id}`)
-    }
+    db.Place.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        .then((updatedPlace) => {
+            res.redirect(`/places/${updatedPlace.id}`);
+        })
+        .catch((err) => {
+            console.log(err);
+            // res.status(404).render('Error404');
+            res.status(404).send(render('Error404'));
+        });
 });
 
 router.delete('/:id', (req, res) => {
