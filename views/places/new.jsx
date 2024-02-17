@@ -15,6 +15,10 @@ const new_form = () => {
                         <label htmlFor='pic'>Place Picture</label>
                         <input className='form-control' type='url' id='pic' name='pic' />
                     </div>
+                    <div>
+                        <label for='founded'>Founded Year</label>
+                        <input className='form=control' id='founded' name='founded' />
+                    </div>
                     <div className='form-group'>
                         <label htmlFor='city'>City</label>
                         <input className='form-control' id='city' name='city' />
