@@ -3,11 +3,15 @@ const { Schema } = mongoose;
 
 const placeSchema = new Schema({
     name: { type: String, required: true },
-    pic: { type: String },
+    pic: { type: String, default: 'http://placekitten.com/350/350' },
     cuisines: { type: String },
     city: { type: String, default: 'Anytown' },
     state: { type: String, default: 'USA' },
-    founded: { type: Number },
+    founded: { type: Number,
+    type: Number,
+    min: [1673, 'Surely not that old?!'],
+    max: [new Date().getFullYear(), 'Hey, this year is in the future!'] 
+},
 });
 
 const Place = mongoose.model('Place', placeSchema);
