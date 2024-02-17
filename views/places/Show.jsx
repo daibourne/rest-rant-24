@@ -25,6 +25,13 @@ const Show = ({ place, id }) => {
                     <p>{cuisinesBadges}</p>
                     </div>
                 </div>
+                <h3>Located in {data.place.city}, {data.place.state}</h3>
+                <h3>
+                    {data.place.showEstablished()}
+                </h3>
+                <h4>
+                    Serving {data.place.cuisines}
+                </h4>
                 <div className='row align-items-center'>
                     <div className='col'>
                         <a href={`/places/${id}/edit`} className='btn btn-warning'>
