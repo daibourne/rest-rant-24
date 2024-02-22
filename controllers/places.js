@@ -24,19 +24,6 @@ router.get('/new', (req, res) => {
     res.send(render('places/new'));
 });
 
-router.get('/:id', (req, res) => {
-    db.Place.findById(req.params.id)
-    .populate('comments')
-    .then(place => {
-        console.log(place.comments)
-        res.send(render('places/show', { place }))
-    })
-    .catch(err => {
-        console.log('err', err)
-        res.send(render('error404'))
-    })
-});
-
 //     const id = Number(req.params.id);
 //     if (isNaN(id)) {
 //         res.status(400).send(render('Error 404'))
@@ -113,6 +100,42 @@ router.delete('/:id', (req, res) => {
         places.splice(id, 1)
         res.redirect('/places')
     }
+});
+
+router.get('/:id/comments/new', (req, res) => {
+    db.Place.findById(req.params.id)
+    .populate('comments')
+    .then(place => {
+        console.log(place.comments)
+        res.send(render('comments/New', { place }));
+    })
+    .catch(err => {
+        console.log('err', err)
+        res.send(render('error404'))
+    })
+});
+
+router.post('/:id/comments', (req, res) => {
+    let commentData = req.body;
+    commentData.rant = commentData.rant === 'on';
+    commentData.stars = parseFloat(commentData.stars);
+    db.Comment.create(commentData)
+        .then((comment) => {
+            db.Place.findById(req.params.id)
+                .then((place) => {
+                    place.comments.push(comment);
+                    place.save();
+                    res.redirect(`/places/${place._id}`);
+                })
+                .catch((err) => {
+                    console.log(err);
+                    res.status(404).send('Not Found');
+                });
+        })
+        .catch((err) => {
+            console.log(err);
+            res.status(400).send('Bad Request');
+        });
 });
 
 module.exports = router;

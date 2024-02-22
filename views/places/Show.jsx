@@ -13,20 +13,24 @@ const Show = ({ place }) => {
     let comments = (
         <h3 className='inactive'>No Comments yet!</h3>
     )
-    if (data.place.comments.length) {
-        comments = data.place.comments.map(c => {
+    if (place.comments.length > 0) {
+        comments = place.comments.map((comment) => {
             return (
-                <div className='border'>
-                    <h2 className='rant'>{c.rant ? 'Rant!' : 'Rave!'}</h2>
-                    <h4>[c.content]</h4>
-                    <h3>
-                        <stong>= {c.author}</stong>
-                    </h3>
-                    <h4>Rating: {c.stars}</h4>
+                <div key={comment.id} className='card mb-3'>
+                    <div className='card-body'>
+                        <h5 className='card-title'>{comment.author}</h5>
+                        <h6 className='card-subtitle mb-2 text-muted'>
+                            {comment.rant ? 'Rant 😡' : 'Rave 🤩'}
+                        </h6>
+                        <h6 className='card-subtitle mb-2 text-muted'>
+                            Rating: {comment.stars} stars
+                        </h6>
+                        <p className='card-text'>{comment.content}</p>
+                    </div>
                 </div>
-            )
+            );
         });
-    };
+    }
 
     return (
         <Default>
