@@ -1,9 +1,5 @@
 const db = require('../models/index')
 
-require('dotenv').config();
-const mongoose = require('mongoose');
-const MONGO_URI = process.env.MONGO_URI;
-
 async function seed() {
     let place = await db.Place.findOne({ name: 'Test' })
 

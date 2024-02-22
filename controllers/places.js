@@ -24,6 +24,19 @@ router.get('/new', (req, res) => {
     res.send(render('places/new'));
 });
 
+router.get('/:id', (req, res) => {
+    db.Place.findById(req.params.id)
+    .populate('comments')
+    .then(place => {
+        console.log(place.comments)
+        res.send(render('places/show', { place }))
+    })
+    .catch(err => {
+        console.log('err', err)
+        res.send(render('error404'))
+    })
+});
+
 //     const id = Number(req.params.id);
 //     if (isNaN(id)) {
 //         res.status(400).send(render('Error 404'))
@@ -33,10 +46,6 @@ router.get('/new', (req, res) => {
 //         res.send(render('places/Show', { place: places[id], id:id }));
 //     }
 // });
-
-router.get('/', (req, res) => {
-    res.send(render('places/Index', { places: places }));
-});
 
 
 router.post('/', (req, res) => {

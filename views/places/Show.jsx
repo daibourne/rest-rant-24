@@ -65,6 +65,8 @@ const Show = ({ place }) => {
                             </button>
                         </form>
                     </div>
+                    <h2>Comments</h2>
+                    {comments}
                 </div>
             </main>
         </Default>
