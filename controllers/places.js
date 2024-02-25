@@ -98,17 +98,25 @@ router.put('/:id', (req, res) => {
 });
 
 router.delete('/:id', (req, res) => {
-    const id = Number(req.params.id);
-    if (isNaN(id)) {
-        res.render('error404')
-    }
-    else if (!places[id]) {
-        res.render('error404')
-    }
-    else {
-        places.splice(id, 1)
+    db.Place.findByIdAndDelete(req.params.id)
+    .then(place => {
         res.redirect('/places')
-    }
+    })
+    .catch(err => {
+        console.log('err', err)
+        res.render('error404')
+    });
+    // const id = Number(req.params.id);
+    // if (isNaN(id)) {
+    //     res.render('error404')
+    // }
+    // else if (!places[id]) {
+    //     res.render('error404')
+    // }
+    // else {
+    //     places.splice(id, 1)
+    //     res.redirect('/places')
+    // }
 });
 
 router.get('/:id/comments/new', (req, res) => {
